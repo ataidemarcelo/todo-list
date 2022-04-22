@@ -4,7 +4,14 @@ const btnAddTask = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const ol = document.getElementById('lista-tarefas');
 
-console.log(btnAddTask, input, ol);
+function fillBackgroundLi(collection) {
+  const list = collection;
+  for (let index = 0; index < list.length; index += 1) {
+    list[index].addEventListener('click', () => {
+      list[index].style.backgroundColor = 'gray';
+    });
+  }
+}
 
 function addTask() {
   btnAddTask.addEventListener('click', () => {
@@ -13,7 +20,8 @@ function addTask() {
     li.innerText = text;
     ol.appendChild(li);
     input.value = '';
-    // console.log('Add Task!: ', text);
+    const lis = document.getElementsByTagName('li');
+    fillBackgroundLi(lis);
   });
 }
 
