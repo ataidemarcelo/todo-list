@@ -4,11 +4,21 @@ const btnAddTask = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const ol = document.getElementById('lista-tarefas');
 
-function fillBackgroundLi(collection) {
-  const list = collection;
-  for (let index = 0; index < list.length; index += 1) {
-    list[index].addEventListener('click', () => {
-      list[index].style.backgroundColor = 'gray';
+function addClassSelected(item) {
+  item.classList.add('selected');
+}
+
+function removeClassSelected(collection) {
+  for (let index = 0; index < collection.length; index += 1) {
+    collection[index].classList.remove('selected');
+  }
+}
+
+function toggleClassSelected(collection) {
+  for (let index = 0; index < collection.length; index += 1) {
+    collection[index].addEventListener('click', (event) => {
+      removeClassSelected(collection);
+      addClassSelected(event.target);
     });
   }
 }
@@ -21,7 +31,7 @@ function addTask() {
     ol.appendChild(li);
     input.value = '';
     const lis = document.getElementsByTagName('li');
-    fillBackgroundLi(lis);
+    toggleClassSelected(lis);
   });
 }
 
