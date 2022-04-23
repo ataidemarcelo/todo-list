@@ -123,3 +123,11 @@ const btnDown = document.getElementById('mover-baixo');
 
 btnUp.addEventListener('click', moveUp);
 btnDown.addEventListener('click', moveDown);
+
+function removeElementSelected() {
+  const selected = document.querySelector('.selected');
+  selected.remove();
+}
+
+const btnRemoveElementSelected = document.getElementById('remover-selecionado');
+btnRemoveElementSelected.addEventListener('click', removeElementSelected);
