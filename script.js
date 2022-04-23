@@ -23,6 +23,16 @@ function toggleClassSelected(collection) {
   }
 }
 
+function toggleClassCompleted(item) {
+  item.addEventListener('dblclick', (event) => {
+    if (event.target.className !== 'completed selected') {
+      event.target.classList.add('completed');
+    } else {
+      event.target.classList.remove('completed');
+    }
+  });
+}
+
 function addTask() {
   btnAddTask.addEventListener('click', () => {
     const text = input.value;
@@ -30,8 +40,10 @@ function addTask() {
     li.innerText = text;
     ol.appendChild(li);
     input.value = '';
+
     const lis = document.getElementsByTagName('li');
     toggleClassSelected(lis);
+    toggleClassCompleted(li);
   });
 }
 
