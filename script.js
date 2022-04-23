@@ -74,4 +74,26 @@ function removeFinished() {
 const btnRemoverFinalizados = document.getElementById('remover-finalizados');
 btnRemoverFinalizados.addEventListener('click', removeFinished);
 
+function saveTasks() {
+  const tasks = document.querySelector('#lista-tarefas');
+  const li = tasks.innerHTML;
+  localStorage.setItem('tasks', li);
+  console.log(li);
+}
+
+const btnSaveTasks = document.getElementById('salvar-tarefas');
+btnSaveTasks.addEventListener('click', saveTasks);
+
+function loadTasks() {
+  const tasksStorage = localStorage.getItem('tasks');
+  const tasksOl = document.querySelector('#lista-tarefas');
+  tasksOl.innerHTML = tasksStorage;
+  const lis = document.getElementsByTagName('li');
+  toggleClassSelected(lis);
+  for (let index = 0; index < lis.length; index += 1) {
+    toggleClassCompleted(lis[index]);
+  }
+}
+
+loadTasks();
 addTask();
