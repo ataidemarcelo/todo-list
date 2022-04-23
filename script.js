@@ -97,3 +97,29 @@ function loadTasks() {
 
 loadTasks();
 addTask();
+
+function moveUp() {
+  const selected = document.querySelector('.selected');
+  if (selected) {
+    const previous = selected.previousSibling;
+    if (previous !== null) {
+      ol.insertBefore(selected, previous);
+    }
+  }
+}
+
+function moveDown() {
+  const selected = document.querySelector('.selected');
+  if (selected) {
+    const next = selected.nextSibling;
+    if (next !== null) {
+      ol.insertBefore(next, selected);
+    }
+  }
+}
+
+const btnUp = document.getElementById('mover-cima');
+const btnDown = document.getElementById('mover-baixo');
+
+btnUp.addEventListener('click', moveUp);
+btnDown.addEventListener('click', moveDown);
