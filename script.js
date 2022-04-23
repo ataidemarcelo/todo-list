@@ -1,5 +1,14 @@
 console.log('Project To Do List!!!');
 
+function addTaskList() {
+  const section = document.querySelector('section');
+  const ol = document.createElement('ol');
+  ol.id = 'lista-tarefas';
+  section.appendChild(ol);
+}
+
+addTaskList();
+
 const btnAddTask = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const ol = document.getElementById('lista-tarefas');
@@ -46,5 +55,13 @@ function addTask() {
     toggleClassCompleted(li);
   });
 }
+
+function removeTasks() {
+  ol.remove();
+  addTaskList();
+}
+
+const btnApagaTudo = document.getElementById('apaga-tudo');
+btnApagaTudo.addEventListener('click', removeTasks);
 
 addTask();
