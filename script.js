@@ -64,4 +64,14 @@ function removeTasks() {
 const btnApagaTudo = document.getElementById('apaga-tudo');
 btnApagaTudo.addEventListener('click', removeTasks);
 
+function removeFinished() {
+  const finished = document.querySelectorAll('.completed');
+  for (let index = 0; index < finished.length; index += 1) {
+    finished[index].remove();
+  }
+}
+
+const btnRemoverFinalizados = document.getElementById('remover-finalizados');
+btnRemoverFinalizados.addEventListener('click', removeFinished);
+
 addTask();
